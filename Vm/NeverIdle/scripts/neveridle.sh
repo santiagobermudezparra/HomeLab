@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # NeverIdle Setup Script
@@ -70,16 +69,17 @@ echo -e "${GREEN}Download complete and executable permissions set.${RESET}"
 
 # Configure parameters
 echo -e "\n${BOLD}Configuring NeverIdle parameters...${RESET}"
-echo -e "${YELLOW}Please configure the resource usage parameters:${RESET}"
+echo -e "${YELLOW}Oracle Cloud requires regular activity (>20% utilization) to prevent instance reclamation.${RESET}"
+echo -e "${YELLOW}Recommended settings for Oracle Cloud: CPU every 10m, 1GB memory, network tests every 30m.${RESET}"
 
-read -p "CPU wasting interval (e.g., 2h, 1h30m): " CPU_INTERVAL
-[ -z "$CPU_INTERVAL" ] && CPU_INTERVAL="2h0m0s"
+read -p "CPU wasting interval (e.g., 10m, 1h): " CPU_INTERVAL
+[ -z "$CPU_INTERVAL" ] && CPU_INTERVAL="10m0s"
 
 read -p "Memory allocation in GB (e.g., 1, 2): " MEMORY_GB
 [ -z "$MEMORY_GB" ] && MEMORY_GB="1"
 
-read -p "Network testing interval (e.g., 4h, 6h): " NETWORK_INTERVAL
-[ -z "$NETWORK_INTERVAL" ] && NETWORK_INTERVAL="4h0m0s"
+read -p "Network testing interval (e.g., 30m, 1h): " NETWORK_INTERVAL
+[ -z "$NETWORK_INTERVAL" ] && NETWORK_INTERVAL="30m0s"
 
 echo -e "${GREEN}Parameters configured.${RESET}"
 
