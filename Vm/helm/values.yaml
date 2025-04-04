@@ -1,0 +1,32 @@
+# -- Number of replicas
+replicaCount: 2
+
+# Database configuration - using SQLite
+database:
+  externalDatabaseEnabled: false
+  
+# Disable the MySQL dependency
+mysql:
+  enabled: false
+
+# Reference the existing secret
+envSecrets:
+  dbCredentials:
+    existingSecret: "db-secret"  # Use the existing secret
+
+# Enable persistence for SQLite database
+persistence:
+  homarrDatabase:
+    enabled: true
+    size: "1Gi"
+    storageClassName: "local-path"  # Use your cluster's storage class
+  
+  # Optional: Enable persistence for images
+  homarrImages:
+    enabled: true
+    size: "1Gi"
+    storageClassName: "local-path"  # Use your cluster's storage class
+
+# Set timezone
+env:
+  TZ: "UTC"  # Change to your timezone if needed
