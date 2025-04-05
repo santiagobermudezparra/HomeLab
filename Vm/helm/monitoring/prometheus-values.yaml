@@ -1,0 +1,49 @@
+# Prometheus Server configuration
+prometheus:
+  service:
+    type: LoadBalancer
+    port: 9090
+    targetPort: 9090
+    # Keep the existing configuration but change type to LoadBalancer
+
+# Alertmanager configuration
+alertmanager:
+  service:
+    type: LoadBalancer
+    port: 9093
+    targetPort: 9093
+    # Keep the existing configuration but change type to LoadBalancer
+
+# Grafana configuration
+grafana:
+  service:
+    type: LoadBalancer
+    port: 80
+    targetPort: 3000
+    # Keep the existing configuration but change type to LoadBalancer
+
+# Optional: Configure persistent storage for Prometheus if not already configured
+prometheus:
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 50Gi
+
+# Optional: Configure persistent storage for Alertmanager if not already configured
+alertmanager:
+  alertmanagerSpec:
+    storage:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
+
+# This ensures we don't accidentally deploy new instances or duplicate services
+prometheusOperator:
+  createCustomResource: false
