@@ -16,6 +16,7 @@ alertmanager:
 
 # Grafana configuration
 grafana:
+  adminPassword: admin
   service:
     type: LoadBalancer
     port: 3000
