@@ -32,7 +32,7 @@ prometheus:
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 50Gi
+              storage: 2Gi
 
 # Optional: Configure persistent storage for Alertmanager if not already configured
 alertmanager:
@@ -43,7 +43,7 @@ alertmanager:
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
-              storage: 10Gi
+              storage: 1Gi
 
 # This ensures we don't accidentally deploy new instances or duplicate services
 prometheusOperator:
