@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: trilium
+  name: trilium
+  namespace: trilium
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trilium
+  template:
+    metadata:
+      labels:
+        app: trilium
+    spec:
+      volumes:
+        - name: trilium-pv-storage
+          persistentVolumeClaim:
+            claimName: trilium-pv-claim
+      containers:
+        - image: zadam/trilium:0.63.7
+          name: trilium
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: "/home/node/trilium-data"
+              name: trilium-pv-storage
+
+
