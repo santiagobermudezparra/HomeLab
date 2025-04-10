@@ -1,0 +1,18 @@
+# argocd-server-lb.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: argocd-server
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-server
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: argocd-server
+  ports:
+    - name: http
+      port: 9098         # External port you will access
+      targetPort: 8080   # Container port used by Argo CD
+      protocol: TCP
+
