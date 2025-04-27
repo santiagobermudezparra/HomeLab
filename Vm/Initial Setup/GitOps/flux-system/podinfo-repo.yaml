@@ -7,4 +7,4 @@ spec:
   interval: 30s
   url: https://github.com/stefanprodan/podinfo
   ref:
-    branch: main  # Changed from 'master' to 'main'
+    branch: master
