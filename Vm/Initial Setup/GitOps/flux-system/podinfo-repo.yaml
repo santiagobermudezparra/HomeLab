@@ -7,4 +7,4 @@ spec:
   interval: 30s
   url: https://github.com/stefanprodan/podinfo
   ref:
-    tag: 6.6.0  # Using a specific tag instead of branch
+    tag: 6.6.0
