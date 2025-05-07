@@ -1,0 +1,17 @@
+# custom-values.yaml
+wordpressUsername: watary
+existingSecret: custom-wp-credentials
+replicaCount: 3
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+service:
+  nodePorts:
+    http: 30000
+    https: ""
+  ports:
+    http: 80
+    https: 443
+  type: NodePort
+
