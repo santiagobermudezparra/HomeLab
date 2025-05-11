@@ -1,0 +1,15 @@
+{{/* THIS WONT BE PART OF THE YAML */}}
+#this comment will be part of the generated YAML
+test: {{ replace " " "-"  .Values.test | lower }}
+labels:
+  app: {{.Release.Name}}
+  chart: {{.Chart.Name}}
+{{ if eq .Values.environment "production" }}
+  environment: production
+  build: stable
+  public-ingress: true
+{{ else }}
+  environment: dev
+  build: alpha
+  public-ingress: false
+{{ end }}
